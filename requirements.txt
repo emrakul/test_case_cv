@@ -1,5 +1,3 @@
 onnxruntime
 scikit-image
 flask
-torchvision
-torch

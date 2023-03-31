@@ -8,5 +8,6 @@ EXPOSE 5123
 RUN apt update
 RUN apt-get install -y build-essential
 
-RUN pip install flask onnxruntime gunicorn
-CMD gunicorn --limit-request-line 0 -w 1 -b 0.0.0.0:5123 --timeout 1000 app:app
+RUN pip install -r requirements.txt
+CMD flask run --host=0.0.0.0
+#CMD gunicorn --limit-request-line 0 -w 1 -b 0.0.0.0:5123 --timeout 1000 app:app
