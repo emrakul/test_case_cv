@@ -10,6 +10,8 @@ processor = Processor('./mobilenetv2.onnx')
 @app.route('/process')
 def transcribe():
     blobs = json.loads(request.data)
-    image1, image2 = blobs['image1'], blobs['image2']
+    bytes_image1, bytes_image2 = blobs['image1'], blobs['image2']
+    image1 = base64.b64decode(bytes_image1.encode('ascii'))
+    image2 = base64.b64decode(bytes_image2.encode('ascii'))
     result = processor.compare(image1, image2)
     return jsonify({"result" : result })
