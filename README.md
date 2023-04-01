@@ -27,3 +27,4 @@ Using `onnxruntime` for portability (lightweight, no dependencies like torch or 
 1. Use fixed sized images. Resize/rescale use baked-in dimensions for onnx.
 2. Use Triton for better gpu utilization
 3. Try ORB-features for image description and matching 
+4. Use guvicorn with multiple workers for scalability
