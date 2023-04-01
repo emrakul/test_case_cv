@@ -11,6 +11,7 @@ def test_all():
     files = glob.glob('tests/*.png')
     print(files)
     
+    i = 0
     for (l, r) in itertools.product(files, files):
         print(l, r)
         with open(l, 'rb') as left_image:
@@ -25,5 +26,7 @@ def test_all():
         res = requests.post('http://172.17.0.2:5000/process', json={
                            'left': left_image_bytes_string, 'right': right_image_bytes_string})
         print(res.content)
-
+        i+=1
+        if i%10 == 1:
+            print(requests.get('http://172.17.0.2:5000/healthcheck').content)
 test_all()
